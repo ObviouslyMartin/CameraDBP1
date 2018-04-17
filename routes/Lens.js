@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Lens_dal = require('../dal/Lens_dal');
+var Filter_dal =require('../dal/Filter_dal');
 /* GET users listing. */
 router.get('/all', function(req, res, next){
     Lens_dal.getAll(function (err, result) {
@@ -16,12 +17,12 @@ router.get('/all', function(req, res, next){
 
 router.get('/add', function(req, res) {
     //passing all the query parameters (req.query to the insert function instead of each individually
-    Lens_dal.getAll(function(err, result){
+    Filter_dal.getAll(function(err, result){
         if(err){
             res.send(err);
         }
         else {
-            res.render('Lens/Lens_add', {Lens:result[0]});
+            res.render('Lens/Lens_add', {filters:result[0]});
         }
     })
 });
@@ -54,7 +55,7 @@ router.get('/edit', function(req, res){
             res.send(err);
         }
         else {
-            res.render('Lens/Lens_Update', {Lens: result[0]});
+            res.render('Lens/Lens_Update', {Lens: result[0][0], Filters_result:[1]});
         }
     });
 });

@@ -21,7 +21,7 @@ router.get('/add', function(req, res) {
             res.send(err);
         }
         else {
-            res.render('Filter/Filter_add', {Filters:result[0]});
+            res.render('Filter/Filter_add', {Filters_result:result[0]});
         }
     })
 });
@@ -54,7 +54,7 @@ router.get('/edit', function(req, res){
             res.send(err);
         }
         else {
-            res.render('Filter/Filter_Update', {Filters: result[0]});
+            res.render('Filter/Filter_Update', {Filters_result: result[0]});
         }
     });
 });

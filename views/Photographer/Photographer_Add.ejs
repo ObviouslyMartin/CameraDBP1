@@ -13,6 +13,36 @@
     Specialty: <input name="Specialty" type="text" /><br />
 
     <br />
+    <br/>
+    Cameras
+    <br />
+    <%for(var i=0; cameras.length > i; i++){ %>
+    <input type="checkbox" name="Camera_Body_Id" value="<%=
+        cameras[i].Camera_Body_Id %>"> <%=cameras[i].Camera_Manufacturer + ', '
+    + cameras[i].Name%>
+    <br/>
+    <%}%>
+    <br />
+    <br />
+    Lenses
+    <br />
+    <%for(var i=0; Lens.length > i; i++){ %>
+    <input type="checkbox" name="Lens_Id" value="<%=
+        Lens[i].Lens_Id %>"> <%=Lens[i].Lens_Manufacturer + ', '
+    + Lens[i].Focal_Length + ', ' + Lens[i].Max_Aperture_Value + ', '
+    + Lens[i].Lens_Mount%>
+    <br/>
+    <%}%>
+    <br />
+    <br />
+    Lenses
+    <br />
+    <%for(var i=0; Filters_result.length > i; i++){ %>
+    <input type="checkbox" name="Filter_Id" value="<%=
+        Lens[i].Filter_Id %>"> <%=Filters_result[i].Filter_Manufacturer + ', '
+    + Filters_result[i].Filter_Size + ', ' + Filters_result[i].Filter_Type%>
+    <br/>
+    <%}%>
     <input type="submit" />
 </form>
 </body>

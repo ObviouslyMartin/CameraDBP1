@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Camera_Body_dal = require('../dal/Camera_Body_dal');
+var Lens_dal = require('../dal/Lens_dal');
 /* GET users listing. */
 router.get('/all', function(req, res, next){
     Camera_Body_dal.getAll(function (err, result) {
@@ -15,12 +16,12 @@ router.get('/all', function(req, res, next){
 });
 
 router.get('/add', function(req, res) {
-    Camera_Body_dal.getAll(function(err, result){
+    Lens_dal.getAll(function(err, result){
         if(err){
             res.send(err);
         }
         else {
-            res.render('Camera_Body/Camera_Body_Add', {cameras:result[0]});
+            res.render('Camera_Body/Camera_Body_Add', {lens_result:result[0]});
         }
     })
 });
@@ -53,7 +54,7 @@ router.get('/edit', function(req, res){
             res.send(err);
         }
         else {
-            res.render('Camera_Body/Camera_Body_Update', {cameras: result[0]});
+            res.render('Camera_Body/Camera_Body_Update', {cameras: result[0][0], lens_result:result[1]});
         }
     });
 });

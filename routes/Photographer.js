@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Photographer_dal = require('../dal/Photographer_dal');
+
 /* GET users listing. */
 router.get('/all', function(req, res, next){
     Photographer_dal.getAll(function (err, result) {

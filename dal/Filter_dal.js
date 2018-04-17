@@ -32,6 +32,7 @@ exports.update = function(params, callback){
     var query = 'UPDATE Filters SET Filter_Manufacturer = ?, Filter_Size = ?, Filter_Type = ?, where Filter_Id = ?';
     var queryData = [params.Filter_Manufacturer, params.Filter_Size, params.Filter_Type, params.Filter_Id];
     connection.query(query, queryData, function(err, result) {
+        //LensFilterUpdate(params.Filter_Id, par);
         callback(err, result);
     });
 };

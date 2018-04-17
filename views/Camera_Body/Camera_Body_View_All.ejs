@@ -15,18 +15,19 @@
         <th>Sensor Type</th>
         <th>Lens Mount</th>
         <th>Auto Focus Points</th>
+        <th>Actions</th>
     </tr>
-    <%for(var i=0; i< Camera_Body.length; i++ ) { %>
+    <%for(var i=0; i< cameras.length; i++ ) { %>
     <tr>
-        <td><%= Camera_Body[i].Camera_Body_Id%></td>
-        <td><%= Camera_Body[i].Camera_Manufacturer%></td>
-        <td><%= Camera_Body[i].Name%></td>
-        <td><%= Camera_Body[i].Still_Image_Resolution%></td>
-        <td><%= Camera_Body[i].Sensor_Type%></td>
-        <td><%= Camera_Body[i].Lens_Mount%></td>
-        <td><%= Camera_Body[i].Auto_Focus_Points%></td>
+        <td><%= cameras[i].Camera_Body_Id%></td>
+        <td><%= cameras[i].Camera_Manufacturer%></td>
+        <td><%= cameras[i].Name%></td>
+        <td><%= cameras[i].Still_Image_Resolution%></td>
+        <td><%= cameras[i].Sensor_Type%></td>
+        <td><%= cameras[i].Lens_Mount%></td>
+        <td><%= cameras[i].Auto_Focus_Points%></td>
         <td>
-            <a href ='/Camera_Body/edit?Camera_Body_Id=<%= Camera_Body[i].Camera_Body_Id%> '>
+            <a href ='/Camera_Body/edit?Camera_Body_Id=<%= cameras[i].Camera_Body_Id%> '>
                 Edit
             </a>
         </td>
