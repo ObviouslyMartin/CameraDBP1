@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lens - Edit</title>
+</head>
+<body>
+<h1>Edit Lens</h1>
+<form action ="/Lens/update" method="get">
+
+    Lens Id: <input type="hidden"
+            id="Lens_Id"
+            name="Lens_Id"
+            value="<%= Lens.Lens_Id %>"
+    /><br />
+    Lens Manufacturer: <input
+            id="Lens_Manufacturer"
+            name="Lens_Manufacturer"
+            type="text"
+            value="<%= Lens.Lens_Manufacturer %>"/><br />
+
+    Focal Length: <input
+            id="Focal_length"
+            name="Focal_length"
+            type="text"
+            value="<%= Lens.Focal_length%>"/><br />
+
+    Max Aperture: <input
+            id="Max_Aperture_Value"
+            name="Max_Aperture_Value"
+            type="text"
+            value="<%= Lens.Max_Aperture_Value%>"/><br />
+
+    Zoom Type: <input
+            id="Zoom_Type"
+            name="Zoom_Type"
+            type="text"
+            value="<%= Lens.Zoom_Type%>"/><br />
+
+    Lens Mount: <input
+            id="Lens_Mount"
+            name="Lens_Mount"
+            type="text"
+            value="<%= Lens.Lens_Mount%>"/><br />
+
+    Lens Format Type: <input
+            id="Lens_Format_Type"
+            name="Lens_Format_Type"
+            type="text"
+            value="<%= Lens.Lens_Format_Type%>"/><br />
+
+    Filter Thread Size: <input
+            id="Filter_Thread_Size"
+            name="Filter_Thread_Size"
+            type="text"
+            value="<%= Lens.Filter_Thread_Size%>"/><br />
+
+
+    <br/>
+
+    <input type="submit" />
+</form>
+</body>
+</html>

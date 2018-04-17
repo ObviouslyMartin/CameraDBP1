@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Photographer - Edit</title>
+</head>
+<body>
+<h1>Edit Photographer</h1>
+<form action ="/Photographer/update" method="get">
+
+    Photographer Id: <input
+            type="hidden"
+            id="ID"
+            name="ID"
+            value="<%= Photographer.ID %>"
+    /><br />
+    FName: <input
+            id="FName"
+            name="FName"
+            type="text"
+            value="<%= Photographer.FName %>"/><br />
+
+    LName: <input
+            id="LName"
+            name="LName"
+            type="text"
+            value="<%= Photographer.LName%>"/><br />
+
+    Email: <input
+            id="Email"
+            name="Email"
+            type="text"
+            value="<%= Filter.Email%>"/><br />
+
+    Specialty <input
+            id="Specialty"
+            name="Specialty"
+            type="text"
+            value="<%= Photographer.Special%>"><br />
+
+    <br/>
+
+    <input type="submit" />
+</form>
+</body>
+</html>

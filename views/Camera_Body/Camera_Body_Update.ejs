@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Camera Body - Edit</title>
+</head>
+<body>
+<h1>Edit Camera Body</h1>
+<form action ="/Camera_Body/update" method="get">
+
+    Camera Body Id: <input
+            type="hidden"
+           id="Camera_Body_Id"
+           name="Camera_Body_Id"
+           value="<%= Camera_Body.Camera_Body_Id %>"
+    /><br />
+    Company Manufacturer: <input
+            id="Camera_Manufacturer"
+            name="Camera_Manufacturer"
+            type="text"
+            value="<%= Camera_Body.Camera_Manufacturer %>"/><br />
+
+    Camera Name: <input
+            id="Name"
+            name="Name"
+            type="text"
+            value="<%= Camera_Body.Name%>"/><br />
+
+    Still Image Resolution: <input
+            id="Still_Image_Resolution"
+            name="Still_Image_Resolution"
+            type="text"
+            value="<%= Camera_Body.Still_Image_Resolution%>"/><br />
+
+    Sensor Type: <input
+            id="Sensor_Type"
+            name="Sensor_Type"
+            type="text"
+            value="<%= Camera_Body.Sensor_Type%>"/><br />
+
+    Lens Mount: <input
+            id="Lens_Mount"
+            name="Lens_Mount"
+            type="text"
+            value="<%= Camera_Body.Lens_Mount%>"/><br />
+
+    Auto Focus Points: <input
+            id="Auto_Focus_Points"
+            name="Auto_Focus_Points"
+            type="text"
+            value="<%= Camera_Body.Auto_Focus_Points%>"/><br />
+
+    <br/>
+
+    <input type="submit" />
+</form>
+</body>
+</html>

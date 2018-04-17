@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lens - View all </title>
+</head>
+<body>
+<h1>Lens</h1>
+<a href="/Lens/add">Add New Lens</a> <br />
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Manufacturer</th>
+        <th>Focal Length (mm)</th>
+        <th>Max Aperture</th>
+        <th>Zoom Type</th>
+        <th>Lens Mount</th>
+        <th>Lens Format Type</th>
+        <th>Filter Thread Size (mm)</th>
+
+    </tr>
+    <% for(var i=0; Lens.length > i; i++ ) { %>
+    <tr>
+        <td><%=Lens[i].Lens_Id%></td>
+        <td><%=Lens[i].Lens_Manufacturer%></td>
+        <td><%=Lens[i].Focal_length%></td>
+        <td><%=Lens[i].Max_Aperture_Value%></td>
+        <td><%=Lens[i].Zoom_Type%></td>
+        <td><%=Lens[i].Lens_Mount%></td>
+        <td><%=Lens[i].Lens_Format_Type%></td>
+        <td><%=Lens[i].Filter_Thread_Size%></td>
+        <td><a href ='/Lens/edit?Lens_Id=<%= Lens[i].Lens_Id%> '>
+                Edit
+            </a>
+        </td>
+    </tr>
+    <%}%>
+</table>
+</body>
+</html>

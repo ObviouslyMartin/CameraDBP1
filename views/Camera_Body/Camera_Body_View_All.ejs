@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Camera Body - View all </title>
+</head>
+<body>
+<h1>Cameras</h1>
+<a href="/Camera_Body/add">Add New Camera Body</a> <br />
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Manufacturer</th>
+        <th>Name</th>
+        <th>Still Image Resolution</th>
+        <th>Sensor Type</th>
+        <th>Lens Mount</th>
+        <th>Auto Focus Points</th>
+    </tr>
+    <%for(var i=0; i< Camera_Body.length; i++ ) { %>
+    <tr>
+        <td><%= Camera_Body[i].Camera_Body_Id%></td>
+        <td><%= Camera_Body[i].Camera_Manufacturer%></td>
+        <td><%= Camera_Body[i].Name%></td>
+        <td><%= Camera_Body[i].Still_Image_Resolution%></td>
+        <td><%= Camera_Body[i].Sensor_Type%></td>
+        <td><%= Camera_Body[i].Lens_Mount%></td>
+        <td><%= Camera_Body[i].Auto_Focus_Points%></td>
+        <td>
+            <a href ='/Camera_Body/edit?Camera_Body_Id=<%= Camera_Body[i].Camera_Body_Id%> '>
+                Edit
+            </a>
+        </td>
+    </tr>
+    <%}%>
+</table>
+</body>
+</html>
