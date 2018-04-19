@@ -5,7 +5,7 @@
 </head>
 <body>
 <h1>Photographer</h1>
-<a href="/Photographers/add">Add New Photographer</a> <br />
+<a href="/Photographer/add">Add New Photographer</a> <br />
 <table border="1">
     <tr>
         <th>ID</th>
@@ -15,15 +15,15 @@
         <th>Specialty</th>
 
     </tr>
-    <% for(var i=0; Photographer.length > i; i++ ) { %>
+    <% for(var i=0; Photographers.length > i; i++ ) { %>
     <tr>
-        <td><%= Photographer[i].ID%></td>
-        <td><%= Photographer[i].FName%></td>
-        <td><%= Photographer[i].LName%></td>
-        <td><%= Photographer[i].Email%></td>
-        <td><%= Photographer[i].Specialty%></td>
+        <td><%= Photographers[i].ID%></td>
+        <td><%= Photographers[i].FName%></td>
+        <td><%= Photographers[i].LName%></td>
+        <td><%= Photographers[i].Email%></td>
+        <td><%= Photographers[i].Specialty%></td>
         <td>
-            <a href ='/Photographer/edit?Photographer_Id=<%=Photographer[i].ID%> '>
+            <a href ='/Photographers/edit?Photographer_Id=<%=Photographers[i].ID%> '>
                 Edit
             </a>
         </td>

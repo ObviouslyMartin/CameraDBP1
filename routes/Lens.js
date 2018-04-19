@@ -17,12 +17,12 @@ router.get('/all', function(req, res, next){
 
 router.get('/add', function(req, res) {
     //passing all the query parameters (req.query to the insert function instead of each individually
-    Filter_dal.getAll(function(err, result){
+    Lens_dal.getinfo(req.query.Lens_Id, function(err, result){
         if(err){
             res.send(err);
         }
         else {
-            res.render('Lens/Lens_add', {filters:result[0]});
+            res.render('Lens/Lens_add', {lens:result[0], filters:result[1]});
         }
     })
 });
@@ -55,7 +55,7 @@ router.get('/edit', function(req, res){
             res.send(err);
         }
         else {
-            res.render('Lens/Lens_Update', {Lens: result[0][0], Filters_result:[1]});
+            res.render('Lens/Lens_Update', {Lens: result[0][0], Filters_result:result[1]});
         }
     });
 });

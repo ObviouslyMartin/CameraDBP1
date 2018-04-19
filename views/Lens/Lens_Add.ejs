@@ -18,12 +18,13 @@
     <br />
     Filters
     <br />
-    <% for(var i=0; filters.length > i; i++){ %>
-        <input type="checkbox" name="Filter_Id" value="<%=
-        filters[i].Filter_Id %>"> <%=filtesr[i].Filter_Manufacturer + ', '
+    <%for(var i=0; filters.length > i; i++){ %>
+    <input type="checkbox" name="Filter_Id" value="<%=
+        filters[i].Filter_Id %>"> <%=filters[i].Filter_Manufacturer + ', '
     + filters[i].Filter_Size + ', ' + filters[i].Filter_Type%>
     <br/>
     <%}%>
+    <br />
     <br/>
     <input type="submit" />
 </form>

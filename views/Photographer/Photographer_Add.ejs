@@ -26,23 +26,24 @@
     <br />
     Lenses
     <br />
-    <%for(var i=0; Lens.length > i; i++){ %>
+    <%for(var i=0; lens.length > i; i++){ %>
     <input type="checkbox" name="Lens_Id" value="<%=
-        Lens[i].Lens_Id %>"> <%=Lens[i].Lens_Manufacturer + ', '
-    + Lens[i].Focal_Length + ', ' + Lens[i].Max_Aperture_Value + ', '
-    + Lens[i].Lens_Mount%>
+        lens[i].Lens_Id %>"> <%=lens[i].Lens_Manufacturer + ', '
+    + lens[i].Focal_length + ', ' + lens[i].Max_Aperture_Value + ', '
+    + lens[i].Lens_Mount%>
     <br/>
     <%}%>
     <br />
     <br />
-    Lenses
+    Filters
     <br />
-    <%for(var i=0; Filters_result.length > i; i++){ %>
+    <%for(var i=0; filters.length > i; i++){ %>
     <input type="checkbox" name="Filter_Id" value="<%=
-        Lens[i].Filter_Id %>"> <%=Filters_result[i].Filter_Manufacturer + ', '
-    + Filters_result[i].Filter_Size + ', ' + Filters_result[i].Filter_Type%>
+        filters[i].Filter_Id %>"> <%=filters[i].Filter_Manufacturer + ', '
+    + filters[i].Filter_Size + ', ' + filters[i].Filter_Type%>
     <br/>
     <%}%>
+    <br />
     <input type="submit" />
 </form>
 </body>

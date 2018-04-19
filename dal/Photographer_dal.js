@@ -12,7 +12,7 @@ exports.getAll = function (callback) {
 };
 
 exports.insert = function(params, callback){
-    var query = 'INSERT INTO Photographer (FName, LName, Email, Specialty,) VALUES (?, ?, ?, ?);';
+    var query = 'insert into Photographer(FName, LName, Email, Specialty) values (?, ?, ?, ?)';
     var queryData = [params.FName, params.LName, params.Email, params.Specialty];
     connection.query(query, queryData, function (err, result) {
         if(err || params.Camera_Body_Id === undefined || params.Lens_Id === undefined || params.Filter_Id === undefined){

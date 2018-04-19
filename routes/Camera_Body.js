@@ -16,12 +16,12 @@ router.get('/all', function(req, res, next){
 });
 
 router.get('/add', function(req, res) {
-    Lens_dal.getAll(function(err, result){
+    Camera_Body_dal.getinfo(req.query.Camera_Body_Id, function(err, result){
         if(err){
             res.send(err);
         }
         else {
-            res.render('Camera_Body/Camera_Body_Add', {lens_result:result[0]});
+            res.render('Camera_Body/Camera_Body_Add', {cameras:result[0], lens:result[1]});
         }
     })
 });

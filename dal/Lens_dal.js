@@ -30,13 +30,14 @@ exports.insert = function(params, callback){
                     LensFilterData.push([Lens_Id, params.Filter_Id[i]]);
                 }
             } else {
-                LensFilterData.push([Lens_Id, param.Lens_Id[i]]);
+                LensFilterData.push([Lens_Id, params.Filter_Id]);
             }
+            connection.query(query, [LensFilterData], function (err, result) {
+                callback(err, result)
+            });
         }
     });
-    connection.query(query, [LensFilterData], function (err, result) {
-        callback(err, result)
-    });
+
 };
 
 var LensFilterInsert = function(Lens_Id, Filter_IdArray, callback){

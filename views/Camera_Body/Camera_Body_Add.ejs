@@ -4,25 +4,26 @@
     <title>Camera Bodies - Add</title>
 </head>
 <body>
-<h1>Add New Camera_Body</h1>
+<h1>Add New Camera Body</h1>
 <form action ="/Camera_Body/insert" method="get">
 
-    Camera Body Manufacturer: <input name="Camera_Manufacturer" type="text" /><br />
-    Camera Body Name: <input name="Name" type="text" /><br />
-    Camera Body Still Image Resolution: <input name="Still_Image_Resolution" type="text" /><br />
-    Camera Body Sensor Type: <input name="Sensor_Type" type="text" /><br />
-    Camera Body Lens Mount: <input name="Lens_Mount" type="text" /><br />
-    Camera Body Auto Focus Points: <input name="Auto_Focus_Points" type="text" /><br />
-    <br />
+    Manufacturer: <input name="Camera_Manufacturer" type="text" /><br />
+    Name: <input name="Name" type="text" /><br />
+    Still Image Resolution: <input name="Still_Image_Resolution" type="text" /><br />
+    Sensor Type: <input name="Sensor_Type" type="text" /><br />
+    Lens Mount: <input name="Lens_Mount" type="text" /><br />
+    Auto Focus Points: <input name="Auto_Focus_Points" type="text" /><br />
     <br />
     Lenses
     <br />
-    <%for(var i=0; Lens.length > i; i++){ %>
-    <input type="checkbox" name="Lens_Id" value="<%=
-        Lens[i].Lens_Id %>"> <%=Lens[i].Lens_Manufacturer + ', '
-    + Lens[i].Focal_Length + ', ' + Lens[i].Max_Aperture_Value + Lens[i].Lens_Mount%>
+    <%for(var i=0; lens.length > i; i++){ %>
+    <input type="checkbox" name="Photographers_Id" value="<%=
+        lens[i].Lens_Id %>"> <%=lens[i].Lens_Manufacturer + ', '
+    + lens[i].Focal_length + ', ' + lens[i].Max_Aperture_Value + ', '
+    + lens[i].Lens_Mount%>
     <br/>
     <%}%>
+    <br />
     <br/>
     <input type="submit" />
 </form>
