@@ -21,7 +21,7 @@ exports.insert = function(params, callback){
         }
         else{
             var Photog_Id = result.insertId;
-            var query = 'Insert into Photographer_Camera_Body (Photog_Id, Camera_Body_Id) values (?, ?)';
+            var query1 = 'Insert into Photographer_Camera_Body (Photog_Id, Camera_Body_Id) values (?, ?)';
             var query2 = 'Insert into Photographer_Lens (Photog_Id, Lens_Id) values (?, ?)';
             var query3 = 'Insert into Photographer_Filters (Photog_Id, Filter_Id) values (?, ?)';
             var PhotogCameraData = [];
@@ -31,6 +31,7 @@ exports.insert = function(params, callback){
                 for(var i = 0; i < params.Camera_Body_Id.length; i++){
                     PhotogCameraData.push([Photog_Id, params.Camera_Body_Id[i]]);
                 }
+
             }
             else if (params.Lens_Id.constructor === Array) {
                 for(var i = 0; i < params.Camera_Body_Id.length; i++){
@@ -43,7 +44,11 @@ exports.insert = function(params, callback){
                 }
             }
             else{
-                connection.query(query, [PhotogCameraData], function(err, result){callback(err, result);});
+                PhotogCameraData.push([Photog_Id, params.Camera_Body_Id]);
+                PhotogLensData.push([Photog_Id, params.Lens_Id]);
+                PhotogFilterData.push([Photog_Id, params.Filter_Id]);
+
+                connection.query(query1, [PhotogCameraData], function(err, result){callback(err, result);});
                 connection.query(query2, [PhotogLensData], function(err, result){callback(err, result);});
                 connection.query(query3, [PhotogFilterData], function(err, result){callback(err, result);});
 
