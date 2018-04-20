@@ -23,7 +23,7 @@ exports.insert = function(params, callback){
         }
         else {
             var Lens_Id = result.insertId;
-            var query = 'Insert into Lens_Filter(Lens_Id, Filter_Id) values (?, ?)';
+            var query = 'Insert into Lens_Filter(Lens_Id, Filter_Id) values (?)';
             var LensFilterData = [];
             if (params.Filter_Id.constructor === Array) {
                 for (var i = 0; i < params.Filter_Id.length; i++) {
@@ -32,7 +32,7 @@ exports.insert = function(params, callback){
             } else {
                 LensFilterData.push([Lens_Id, params.Filter_Id]);
             }
-            connection.query(query, [LensFilterData], function (err, result) {
+            connection.query(query, LensFilterData, function (err, result) {
                 callback(err, result)
             });
         }
