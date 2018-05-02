@@ -1,9 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Photographer_dal = require('../dal/Photographer_dal');
-var Camera_Body_dal = require('../dal/Camera_Body_dal');
-var Lens_dal = require('../dal/Lens_dal');
-var Filter_dal = require('../dal/Filter_dal');
+
 /* GET users listing. */
 router.get('/all', function(req, res, next){
     Photographer_dal.getAll(function (err, result) {

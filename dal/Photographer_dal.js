@@ -21,9 +21,9 @@ exports.insert = function(params, callback){
         }
         else{
             var Photog_Id = result.insertId;
-            var query1 = 'Insert into Photographer_Camera_Body (Photog_Id, Camera_Body_Id) values (?)';
-            var query2 = 'Insert into Photographer_Lens (Photog_Id, Lens_Id) values (?)';
-            var query3 = 'Insert into Photographer_Filter (Photog_Id, Filter_Id) values (?)';
+            var query1 = 'Insert into Photographer_Camera_Body (Photog_Id, Camera_Body_Id) values ?';
+            var query2 = 'Insert into Photographer_Lens (Photog_Id, Lens_Id) values ?';
+            var query3 = 'Insert into Photographer_Filter (Photog_Id, Filter_Id) values ?';
             var PhotogCameraData = [];
             var PhotogLensData = [];
             var PhotogFilterData = [];
@@ -49,9 +49,9 @@ exports.insert = function(params, callback){
                 PhotogFilterData.push([Photog_Id, params.Filter_Id]);
 
             }
-            connection.query(query1, PhotogCameraData, function(err, result){
-                    connection.query(query2, PhotogLensData, function(err, result){
-                        connection.query(query3, PhotogFilterData, function(err, result){
+            connection.query(query1, [PhotogCameraData], function(err, result){
+                    connection.query(query2, [PhotogLensData], function(err, result){
+                        connection. query(query3, [PhotogFilterData], function(err, result){
                             callback(err, result);
                 }
             );

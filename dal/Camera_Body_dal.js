@@ -23,7 +23,7 @@ exports.insert = function(params, callback){
         }
         else {
             var Camera_Body_Id = result.insertId;
-            var query = 'Insert into Camera_Body_Lens (Camera_Body_Id, Lens_Id) values (?)';
+            var query = 'Insert into Camera_Body_Lens (Camera_Body_Id, Lens_Id) values ?';
             var CameraBodyLensData = [];
             if(params.Lens_Id.constructor === Array){
                 for(var i = 0; i < params.Lens_Id.length; i++){
@@ -32,7 +32,7 @@ exports.insert = function(params, callback){
             } else {
                 CameraBodyLensData.push([Camera_Body_Id, params.Lens_Id]);
             }
-            connection.query(query, CameraBodyLensData, function(err, result){callback(err, result);});
+            connection.query(query, [CameraBodyLensData], function(err, result){callback(err, result);});
         }
     });
 };
