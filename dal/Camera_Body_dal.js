@@ -63,37 +63,29 @@ exports.update = function(params, callback){
         'Sensor_Type=?, Lens_Mount=?, Auto_Focus_Points=? where Camera_Body_Id=?';
     var queryData = [params.Camera_Manufacturer, params.Name, params.Still_Image_Resolution,
         params.Sensor_Type, params.Lens_Mount, params.Auto_Focus_Points, params.Camera_Body_Id];
-    connection.query(query, queryData, function(err, result) {
-        CameraBodyLensUpdate(params.Camera_Body_Id, params.Lens_IdArray, callback);
-        callback(err, result);
-    });
-};
-
-
-
-var CameraBodyLensInsert = function(Camera_Body_Id, Lens_IdArray, callback){
-    var query = 'Insert into Camera_Body_Lens (Camera_Body_Id, Lens_id) values (?, ?)';
-    var CameraLensData = [];
-    if(Lens_IdArray.constructor === Array){
-        for(var i = 0; i < Lens_IdArray.length; i++){
-            CameraLensData.push([Camera_Body_Id, Lens_IdArray[i]]);
-        }
-    }
-    else {
-        CameraLensData.push([Camera_Body_Id, Lens_IdArray]);
-    }
-    connection.query(query, [CameraLensData], function(err, result){
-        callback(err, result);
-    });
-};
-
-var CameraBodyLensUpdate = function(Camera_Body_Id, Lens_IdArray, callback){
-    var query = 'CALL Camera_Body_Lens_delete(?)';
-    connection.query(query, Camera_Body_Id, function(err, result){
-        if(err || Lens_IdArray === undefined){
-            callback(err, result);
-        }else{
-            CameraBodyLensInsert(Camera_Body_Id, Lens_IdArray, callback);
-        }
+    connection.query(query, queryData, function(err, result){
+            if(err || params.Lens_Id === undefined) {
+                console.log(err);
+                callback(err, result);
+            }
+            else {
+                var CameraID = params.Camera_Body_Id;
+                var query1 = 'insert into Camera_Body_Lens (Camera_Body_Id, Lens_Id) values ?';
+                var query2 = 'Call Camera_Body_Lens_Delete(?)';
+                var deletedata = [params.Camera_Body_Id];
+                var LensData = [];
+                if (params.Lens_Id.constructor === Array) {
+                    for (var i = 0; i < params.Lens_Id.length; i++) {
+                        LensData.push([CameraID, params.Lens_Id[i]]);
+                    }
+                } else {
+                    LensData.push([CameraID, params.Lens_Id]);
+                }
+                connection.query(query1, [LensData], function (err, result) {
+                    connection.query(query2, deletedata, function (err, result) {
+                        callback(err, result);
+                    })
+                })
+            }
     });
 };

@@ -70,8 +70,8 @@ exports.getinfo = function(Photographer_Id, callback){
 
 exports.update = function(params, callback){
     var query = 'UPDATE Photographer SET FName=?, LName=?, Email=?, Specialty=? where ID=?';
-    var queryData = [params.ID, params.FName, params.LName, params.Email,
-        params.Specialty];
+    var queryData = [params.FName, params.LName, params.Email,
+        params.Specialty, params.ID];
     connection.query(query, queryData, function(err, results){
         if(err||params.Camera_Body_Id){
             console.log(err);
@@ -84,7 +84,8 @@ exports.update = function(params, callback){
             var query3 = 'INSERT into Photographer_Filter (Photog_Id, Filter_Id) Values ?';
             var query4 = 'Call Photographer_Camera_Delete (?)';
             var query5 = 'Call Photographer_Lens_Delete (?)';
-            var query6 = 'Call Photographer_Filter_Delete (?)';;
+            var query6 = 'Call Photographer_Filter_Delete (?)';
+
             var CameraData = [];
             var LensData =[];
             var FilterData = [];
@@ -95,7 +96,7 @@ exports.update = function(params, callback){
 
         }
         else if (params.Lens_Id.constructor === Array) {
-            for(var i = 0; i < params.Camera_Body_Id.length; i++){
+            for(var i = 0; i < params.Lens_Id.length; i++){
                 LensData.push([PhotogID, params.Lens_Id[i]]);
             }
         }

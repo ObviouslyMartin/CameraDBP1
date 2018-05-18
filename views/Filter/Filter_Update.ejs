@@ -5,13 +5,13 @@
 </head>
 <body>
 <h1>Edit Filter</h1>
-<form action ="/Filters/update" method="get">
+<form action ="/Filter/update" method="get">
 
     <input
             type="hidden"
             id="Filter_Id"
             name="Filter_Id"
-            value="<%= Filters.Filter_id %>"
+            value="<%= Filters.Filter_Id %>"
     /><br />
     Filter Manufacturer: <input
             id="Filter_Manufacturer"
@@ -29,18 +29,9 @@
             id="Filter_Type"
             name="Filter_Type"
             type="text"
-            value="<%= Filters.Fiilter_Type%>"/><br />
+            value="<%= Filters.Filter_Type%>"/><br />
 
     <br/>
-    Filters
-    <br />
-    <%for(var i=0; filters.length > i; i++){ %>
-    <input type="checkbox" name="Filter_Id" value="<%=
-        filters[i].Filter_Id %>"> <%=filters[i].Filter_Manufacturer + ', '
-    + filters[i].Filter_Size + ', ' + filters[i].Filter_Type%>
-    <br/>
-    <%}%>
-    <br />
     <input type="submit" />
 </form>
 </body>

@@ -4,8 +4,8 @@
     <title>A query using a correlated subquery</title>
 </head>
 <body>
-<h1>Select * from Camera_Body c where c.Camera_Manufacturer=
-    (Select Lens_Manufacturer from Lens l where Lens_Manufacturer = 'Canon' group by Lens_Manufacturer);</h1>
+<h4>Select * from Camera_Body c where c.Camera_Manufacturer=
+    (Select Lens_Manufacturer from Lens l where Lens_Manufacturer = 'Canon' group by Lens_Manufacturer);</h4>
 
 <table border="1">
     <tr>

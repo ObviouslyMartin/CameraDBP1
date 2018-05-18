@@ -69,8 +69,28 @@ exports.update = function(params, callback){
     var queryData = [params.Lens_Manufacturer, params.Focal_length, params.Max_Aperture_Value,
         params.Zoom_Type, params.Lens_Mount, params.Lens_Format_Type, params.Filter_Thread_Size, params.Lens_Id];
     connection.query(query, queryData, function(err, result) {
-        LensFilterUpdate(params.Lens_Id, params.Filter_IdArray, callback);
-        callback(err, result);
+        if(err || params.Filter_Id === undefined){
+            console.log(err);
+            callback(err, result);
+        }
+        else {
+            var LensID = params.Lens_Id;
+            var query1 = 'insert into Lens_Filter (Lens_Id, Filter_Id) values ?';
+            var query2 = 'Call Lens_Filter_Delete(?)';
+            var deletedata = [params.Lens_Id];
+            var FilterData = [];
+            if(params.Lens_Id.constructor === Array) {
+                for(var i = 0; i < params.Filter_Id.length; i++){
+                    FilterData.push([LensID, params.Filter_Id]);
+                }
+            } else {
+                FilterData.push([LensID, params.Filter_Id]);
+            }
+            connection.query(query1, [FilterData], function(err, result){
+                connection.query(query2, deletedata, function(err, result){})
+                    callback(err, result);
+            })
+        }
     });
 };
 exports.delete = function(params, callback){

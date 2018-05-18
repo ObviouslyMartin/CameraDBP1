@@ -54,7 +54,7 @@ router.get('/edit', function(req, res){
             res.send(err);
         }
         else {
-            res.render('Camera_Body/Camera_Body_Update', {cameras: result[0], lens_result:result[1]});
+            res.render('Camera_Body/Camera_Body_Update', {cameras: result[0][0], lens_result:result[1]});
         }
     });
 });

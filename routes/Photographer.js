@@ -57,7 +57,7 @@ router.get('/edit', function(req, res){
             res.send(err);
         }
         else {
-            res.render('Photographer/Photographer_Update', {Photographers: result[0], cameras:result[1],
+            res.render('Photographer/Photographer_Update', {Photographers: result[0][0], cameras:result[1],
                 lens_result:result[2], filters:result[3]});
         }
     });
