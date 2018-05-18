@@ -54,7 +54,18 @@ router.get('/edit', function(req, res){
             res.send(err);
         }
         else {
-            res.render('Camera_Body/Camera_Body_Update', {cameras: result[0][0], lens_result:result[1]});
+            res.render('Camera_Body/Camera_Body_Update', {cameras: result[0], lens_result:result[1]});
+        }
+    });
+});
+
+router.get('/delete', function(req, res){
+    Camera_Body_dal.delete(req.query, function(err, result){
+        if(err){
+            res.send(err);
+        }
+        else{
+            res.redirect(302, '/Camera_Body/all');
         }
     });
 });

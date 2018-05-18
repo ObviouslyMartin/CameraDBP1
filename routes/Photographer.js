@@ -57,7 +57,18 @@ router.get('/edit', function(req, res){
             res.send(err);
         }
         else {
-            res.render('Photographer/Photographer_Update', {Photographers: result[0]});
+            res.render('Photographer/Photographer_Update', {Photographers: result[0], cameras:result[1],
+                lens_result:result[2], filters:result[3]});
+        }
+    });
+});
+router.get('/delete', function(req, res){
+    Photographer_dal.delete(req.query, function(err, result){
+        if(err){
+            res.send(err);
+        }
+        else{
+            res.redirect(302, '/Photographer/all');
         }
     });
 });

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>A query using a DISTINCT</title>
+</head>
+<body>
+<h1>Select Distinct Filter_Manufacturer from Filters</h1>
+
+<table border="1">
+    <tr>
+        <th>Filter Manufacturer</th>
+    </tr>
+    <%for(var i=0; i< stuff.length; i++ ) { %>
+    <tr>
+        <td><%= stuff[i].Filter_Manufacturer%></td>
+    </tr>
+    <%}%>
+</table>
+</body>
+</html>

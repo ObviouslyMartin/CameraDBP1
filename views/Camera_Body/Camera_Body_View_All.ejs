@@ -28,7 +28,10 @@
         <td><%= cameras[i].Auto_Focus_Points%></td>
         <td>
             <a href ='/Camera_Body/edit?Camera_Body_Id=<%= cameras[i].Camera_Body_Id%> '>
-                Edit
+                    Edit
+            </a>
+            <a href ='/Camera_Body/delete?Camera_Body_Id=<%= cameras[i].Camera_Body_Id%> '>
+                Delete
             </a>
         </td>
     </tr>

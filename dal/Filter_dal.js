@@ -36,3 +36,17 @@ exports.update = function(params, callback){
         callback(err, result);
     });
 };
+
+exports.delete = function(params, callback){
+    var query1 = 'call Filter_Delete(?)';
+    var query2 = 'call Filter_Lens_Delete(?)';
+    var query3 = 'call Filter_Photog_Delete(?)';
+    var querydata = [params.Filter_Id];
+    connection.query(query1, querydata, function(err, result){
+        connection.query(query2, querydata, function(err, result){
+            connection.query(query3, querydata, function(err, result){
+                callback(err,result);
+            })
+        })
+    })
+};

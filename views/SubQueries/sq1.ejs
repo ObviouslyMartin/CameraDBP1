@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>A query using a correlated subquery</title>
+</head>
+<body>
+<h1>Select * from Camera_Body c where c.Camera_Manufacturer=
+    (Select Lens_Manufacturer from Lens l where Lens_Manufacturer = 'Canon' group by Lens_Manufacturer);</h1>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Auto_Focus_Points</th>
+        <th>Still Image Resolution</th>
+        <th>Camera_Manufacturer</th>
+        <th>Lens Mount</th>
+        <th>Sensor Type</th>
+    </tr>
+    <%for(var i=0; i< stuff.length; i++ ) { %>
+    <tr>
+        <td><%= stuff[i].Camera_Body_Id%></td>
+        <td><%= stuff[i].Name%></td>
+        <td><%= stuff[i].Auto_Focus_Points%></td>
+        <td><%= stuff[i].Still_Image_Resolution%></td>
+        <td><%= stuff[i].Camera_Manufacturer%></td>
+        <td><%= stuff[i].Lens_Mount%></td>
+        <td><%= stuff[i].Sensor_Type%></td>
+    </tr>
+    <%}%>
+</table>
+</body>
+</html>

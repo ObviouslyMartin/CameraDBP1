@@ -7,50 +7,64 @@
 <h1>Edit Camera Body</h1>
 <form action ="/Camera_Body/update" method="get">
 
-    Camera Body Id: <input
+    <input
             type="hidden"
            id="Camera_Body_Id"
            name="Camera_Body_Id"
-           value="<%= Camera_Body.Camera_Body_Id %>"
+           value="<%=cameras.Camera_Body_Id %>"
     /><br />
     Company Manufacturer: <input
             id="Camera_Manufacturer"
             name="Camera_Manufacturer"
             type="text"
-            value="<%= Camera_Body.Camera_Manufacturer %>"/><br />
+            value="<%= cameras.Camera_Manufacturer %>"/><br />
 
     Camera Name: <input
             id="Name"
             name="Name"
             type="text"
-            value="<%= Camera_Body.Name%>"/><br />
+            value="<%= cameras.Name%>"/><br />
 
     Still Image Resolution: <input
             id="Still_Image_Resolution"
             name="Still_Image_Resolution"
             type="text"
-            value="<%= Camera_Body.Still_Image_Resolution%>"/><br />
+            value="<%= cameras.Still_Image_Resolution%>"/><br />
 
     Sensor Type: <input
             id="Sensor_Type"
             name="Sensor_Type"
             type="text"
-            value="<%= Camera_Body.Sensor_Type%>"/><br />
+            value="<%= cameras.Sensor_Type%>"/><br />
 
     Lens Mount: <input
             id="Lens_Mount"
             name="Lens_Mount"
             type="text"
-            value="<%= Camera_Body.Lens_Mount%>"/><br />
+            value="<%= cameras.Lens_Mount%>"/><br />
 
     Auto Focus Points: <input
             id="Auto_Focus_Points"
             name="Auto_Focus_Points"
             type="text"
-            value="<%= Camera_Body.Auto_Focus_Points%>"/><br />
+            value="<%= cameras.Auto_Focus_Points%>"/><br />
 
     <br/>
-
+    Lenses
+    <br />
+    <%for(var i=0; lens_result.length > i; i++){
+        var checked ="";
+        if(lens_result[i].Camera_Body_Id != null){
+            checked = "checked";
+        }
+    %>
+    <input type="checkbox" name="Lens_Id" <%= checked %> value="<%=
+        lens_result[i].Lens_Id %>"> <%=lens_result[i].Lens_Manufacturer + ' '
+    + lens_result[i].Focal_length + 'mm, f/' + lens_result[i].Max_Aperture_Value + ' '
+    + lens_result[i].Lens_Mount %>
+    <br/>
+    <%}%>
+    <br/>
     <input type="submit" />
 </form>
 </body>

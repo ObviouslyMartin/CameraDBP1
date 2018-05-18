@@ -73,7 +73,22 @@ exports.update = function(params, callback){
         callback(err, result);
     });
 };
-
+exports.delete = function(params, callback){
+    var query1 = 'call Lens_Delete(?)';
+    var query2 = 'call Lens_Camera_Body_Delete(?)';
+    var query3 = 'call Lens_Filter_Delete(?)';
+    var query4 = 'call Lens_Photog_Delete(?)';
+    var querydata = [params.Lens_Id];
+    connection.query(query1, querydata, function(err, result){
+        connection.query(query2, querydata, function(err, result){
+            connection.query(query3, querydata, function(err, result){
+                connection.query(query4, querydata, function(err, result) {
+                    callback(err,result);
+                })
+            })
+        })
+    })
+};
 var LensFilterUpdate = function (Lens_Id, Filter_IdArray, callback){
     var query = 'CAll Lens_Filter_delelete(?)';
     connection.query(query, Lens_Id, function(err, result){

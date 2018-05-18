@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>A query using a UNION</title>
+</head>
+<body>
+<h1>Select Lens_Mount from Camera_Body union Select Lens_Mount from Lens;</h1>
+
+<table border="1">
+    <tr>
+        <th>Lens Mount</th>
+    </tr>
+    <%for(var i=0; i< stuff.length; i++ ) { %>
+    <tr>
+        <td><%= stuff[i].Lens_Mount%></td>
+    </tr>
+    <%}%>
+</table>
+</body>
+</html>

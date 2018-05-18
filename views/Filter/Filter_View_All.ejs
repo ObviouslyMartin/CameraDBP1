@@ -21,8 +21,12 @@
         <td><%= Filters[i].Filter_Manufacturer%></td>
         <td><%= Filters[i].Filter_Size%></td>
         <td><%= Filters[i].Filter_Type%></td>
-        <td><a href ='/Filters/edit?Filter_Id=<%=Filters[i].Filter_Id%> '>
+        <td>
+            <a href ='/Filter/edit?Filter_Id=<%= Filters[i].Filter_Id%> '>
                 Edit
+            </a>
+            <a href ='/Filter/delete?Filter_Id=<%= Filters[i].Filter_Id%> '>
+                Delete
             </a>
         </td>
     </tr>

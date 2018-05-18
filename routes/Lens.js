@@ -55,7 +55,18 @@ router.get('/edit', function(req, res){
             res.send(err);
         }
         else {
-            res.render('Lens/Lens_Update', {Lens: result[0][0], Filters_result:result[1]});
+            res.render('Lens/Lens_Update', {Lens: result[0], filters:result[1]});
+        }
+    });
+});
+
+router.get('/delete', function(req, res){
+    Lens_dal.delete(req.query, function(err, result){
+        if(err){
+            res.send(err);
+        }
+        else{
+            res.redirect(302, '/Lens/all');
         }
     });
 });

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>A query using a subquery with EXISTS or NOT EXISTS</title>
+</head>
+<body>
+<h1>select l.Lens_Manufacturer, l.Focal_Length, l.Max_Aperture_Value from Lens l where exists
+    (select Lens_id from Lens_Filter lf join Filters f on f.Filter_Id = lf.Filter_Id where
+    lf.Lens_Id=l.Lens_Id);</h1>
+
+<table border="1">
+    <tr>
+        <th>Lens Manufacturer</th>
+        <th>Focal Length</th>
+        <th>Max_Aperture_Value</th>
+    </tr>
+    <%for(var i=0; i< stuff.length; i++ ) { %>
+    <tr>
+        <td><%= stuff[i].Lens_Manufacturer%></td>
+        <td><%= stuff[i].Focal_Length%></td>
+        <td><%= stuff[i].Max_Aperture_Value%></td>
+    </tr>
+    <%}%>
+</table>
+</body>
+</html>

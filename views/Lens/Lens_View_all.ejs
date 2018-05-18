@@ -28,8 +28,12 @@
         <td><%=Lens[i].Lens_Mount%></td>
         <td><%=Lens[i].Lens_Format_Type%></td>
         <td><%=Lens[i].Filter_Thread_Size%></td>
-        <td><a href ='/Lens/edit?Lens_Id=<%= Lens[i].Lens_Id%> '>
+        <td>
+            <a href ='/Lens/edit?Lens_Id=<%= Lens[i].Lens_Id%> '>
                 Edit
+            </a>
+            <a href ='/Lens/delete?Lens_Id=<%= Lens[i].Lens_Id%> '>
+                Delete
             </a>
         </td>
     </tr>

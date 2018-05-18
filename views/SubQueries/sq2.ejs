@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>A query using a subquery in a JOIN</title>
+</head>
+<body>
+<h1>select c.Camera_Manufacturer, c.Name from Camera_Body c
+    join (select Lens_Mount from Lens) as lm on c.Lens_Mount=lm.Lens_Mount;</h1>
+
+<table border="1">
+    <tr>
+        <th>Camera Manufacturer</th>
+        <th>Name</th>
+    </tr>
+    <%for(var i=0; i< stuff.length; i++ ) { %>
+    <tr>
+        <td><%= stuff[i].Camera_Manufacturer%></td>
+        <td><%= stuff[i].Name%></td>
+    </tr>
+    <%}%>
+</table>
+</body>
+</html>

@@ -7,38 +7,80 @@
 <h1>Edit Photographer</h1>
 <form action ="/Photographer/update" method="get">
 
-    Photographer Id: <input
+    <input
             type="hidden"
             id="ID"
             name="ID"
-            value="<%= Photographer.ID %>"
-    /><br />
+            value="<%= Photographers.ID %>"/><br />
+    
     FName: <input
             id="FName"
             name="FName"
             type="text"
-            value="<%= Photographer.FName %>"/><br />
+            value="<%= Photographers.FName %>"/><br />
 
     LName: <input
             id="LName"
             name="LName"
             type="text"
-            value="<%= Photographer.LName%>"/><br />
+            value="<%= Photographers.LName%>"/><br />
 
     Email: <input
             id="Email"
             name="Email"
             type="text"
-            value="<%= Filter.Email%>"/><br />
+            value="<%= Photographers.Email%>"/><br />
 
     Specialty <input
             id="Specialty"
             name="Specialty"
             type="text"
-            value="<%= Photographer.Special%>"><br />
+            value="<%= Photographers.Special%>"><br />
 
     <br/>
-
+    Cameras
+    <br />
+    <%for(var i=0; cameras.length > i; i++){
+        var checked ="";
+        if(cameras[i].Camera_Body_Id != null){
+            checked = "checked";
+        }
+    %>
+    <input type="checkbox" name="Camera_Body_Id" <%= checked %> value="<%=
+        cameras[i].Camera_Body_Id %>"> <%=cameras[i].Camera_Manufacturer + ' '
+    + cameras[i].Name%>
+    <br/>
+    <%}%>
+    <br/>
+    Lenses
+    <br />
+    <%for(var i=0; lens_result.length > i; i++){
+        var checked ="";
+        if(lens_result[i].Lens_Id != null){
+            checked = "checked";
+        }
+    %>
+    <input type="checkbox" name="Lens_Id" value="<%=
+        lens_result[i].Lens_Id %>"> <%=lens_result[i].Lens_Manufacturer + ' '
+    + lens_result[i].Focal_length + 'mm, f/' + lens_result[i].Max_Aperture_Value + ', '
+    + lens_result[i].Lens_Mount%>
+    <br/>
+    <%}%>
+    <br />
+    Filters
+    <br />
+    <%for(var i=0; filters.length > i; i++){
+        var checked ="";
+        if(filters[i].Filter_Id != null){
+            checked = "checked";
+        }
+    %>
+    <input type="checkbox" name="Filter_Id" value="<%=
+        filters[i].Filter_Id %>"> <%=filters[i].Filter_Manufacturer + ', '
+    + filters[i].Filter_Size + ', ' + filters[i].Filter_Type%>
+    <br/>
+    <%}%>
+    <br />
     <input type="submit" />
 </form>
 </body>

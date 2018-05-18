@@ -53,12 +53,9 @@ exports.insert = function(params, callback){
                     connection.query(query2, [PhotogLensData], function(err, result){
                         connection. query(query3, [PhotogFilterData], function(err, result){
                             callback(err, result);
-                }
-            );
-
-                });
+                            });
+                    });
             });
-
         }
     });
 };
@@ -72,16 +69,62 @@ exports.getinfo = function(Photographer_Id, callback){
 };
 
 exports.update = function(params, callback){
-    var query = 'UPDATE Photographer SET FName=?, LName=?, Email=?, ' +
-        'Specialty=? where ID=?';
-    var queryData = [params.FName, params.LName, params.Email,
-        params.Specialty, params.ID];
-    connection.query(query, queryData, function(err, result) {
-        PhotographerCameraBodyUpdate(params.Photog_Id, params.Camera_Body_Id, function (err, result){callback(err, result);});});
-    connection.query(query, queryData, function(err, result) {
-        PhotographerLensUpdate(params.Photog_Id, params.Lens_Id, function (err, result){callback(err, result);});});
-    connection.query(query, queryData, function(err, result) {
-        PhotographerFilterUpdate(params.Photog_Id, params.Lens_Id, function (err, result){callback(err, result);});});
+    var query = 'UPDATE Photographer SET FName=?, LName=?, Email=?, Specialty=? where ID=?';
+    var queryData = [params.ID, params.FName, params.LName, params.Email,
+        params.Specialty];
+    connection.query(query, queryData, function(err, results){
+        if(err||params.Camera_Body_Id){
+            console.log(err);
+            callback(err, results);
+        }
+        else {
+            var PhotogID = params.ID;
+            var query1 = 'INSERT into Photographer_Camera (Photog_Id, Camera_Body_Id) values ?';
+            var query2 = 'INSERT into Photographer_Lens (Photog_Id, Lens_Id) values ?';
+            var query3 = 'INSERT into Photographer_Filter (Photog_Id, Filter_Id) Values ?';
+            var query4 = 'Call Photographer_Camera_Delete (?)';
+            var query5 = 'Call Photographer_Lens_Delete (?)';
+            var query6 = 'Call Photographer_Filter_Delete (?)';;
+            var CameraData = [];
+            var LensData =[];
+            var FilterData = [];
+        if (params.Camera_Body_Id.constructor === Array){
+            for(var i = 0; i < params.Camera_Body_Id.length; i++){
+                CameraData.push([PhotogID, params.Camera_Body_Id[i]]);
+            }
+
+        }
+        else if (params.Lens_Id.constructor === Array) {
+            for(var i = 0; i < params.Camera_Body_Id.length; i++){
+                LensData.push([PhotogID, params.Lens_Id[i]]);
+            }
+        }
+        else if (params.Filter_Id.constructor === Array) {
+            for (var i = 0; i < params.Filter_Id.length; i++) {
+                FilterData.push([PhotogID, params.Filter_Id[i]]);
+            }
+        }
+        else {
+            CameraData.push([PhotogID, params.Camera_Body_Id]);
+            LensData.push([PhotogID, params.Lens_Id]);
+            FilterData.push([PhotogID, params.Filter_Id]);
+
+        }
+        };
+        connection.query(query1, [CameraData], function(err, result){
+            connection.query(query2, [LensData], function(err, result){
+                connection. query(query3, [FilterData], function(err, result){
+                    connection.query(query4,PhotogID, function(err, result) {
+                        connection.query(query5, PhotogID, function (err, result) {
+                            connection.query(query6, PhotogID, function (err, result) {
+                                callback(err, result);
+                            })
+                        })
+                    })
+                })
+            });
+        });
+    });
 };
 
 
@@ -134,7 +177,7 @@ var PhotogFilterInsert = function(Photog_Id, Filter_IdArray, callback){
 };
 
 var PhotographerCameraBodyUpdate = function(Photographer_id, Camera_Body_IdArray, callback){
-    var query = 'CALL Photographer_Camera_delete(?)';
+    var query = 'CALL Photographer_Camera_Delete(?)';
     connection.query(query, Photographer_id, function(err, result){
         if(err || Camera_Body_IdArray === undefined){
             callback(err, result);
@@ -164,4 +207,21 @@ var PhotographerFilterUpdate = function(Photographer_id, Filter_IdArray, callbac
             PhotogFilterInsert(Photographer_id, Filter_IdArray, callback);
         }
     });
+};
+
+exports.delete = function(params, callback){
+    var query1 = 'call Photographer_Delete(?)';
+    var query2 = 'call Photographer_Camera_Delete(?)';
+    var query3 = 'call Photographer_Lens_Delete(?)';
+    var query4 = 'call Photographer_Filter_Delete(?)';
+    var querydata = [params.ID];
+    connection.query(query1, querydata, function(err, result){
+        connection.query(query2, querydata, function(err, result){
+            connection.query(query3, querydata, function(err, result){
+                connection.query(query4, querydata, function(err, result){
+                    callback(err,result);
+                })
+            })
+        })
+    })
 };

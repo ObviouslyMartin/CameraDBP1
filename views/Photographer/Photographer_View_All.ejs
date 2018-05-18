@@ -13,6 +13,7 @@
         <th>Last Name</th>
         <th>Email</th>
         <th>Specialty</th>
+        <th>Actions</th>
 
     </tr>
     <% for(var i=0; Photographers.length > i; i++ ) { %>
@@ -23,8 +24,11 @@
         <td><%= Photographers[i].Email%></td>
         <td><%= Photographers[i].Specialty%></td>
         <td>
-            <a href ='/Photographers/edit?Photographer_Id=<%=Photographers[i].ID%> '>
+            <a href ='/Photographer/edit?ID=<%= Photographers[i].ID%> '>
                 Edit
+            </a>
+            <a href ='/Photographer/delete?ID=<%= Photographers[i].ID%> '>
+                Delete
             </a>
         </td>
     </tr>

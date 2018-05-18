@@ -32,7 +32,15 @@
             value="<%= Filters.Fiilter_Type%>"/><br />
 
     <br/>
-
+    Filters
+    <br />
+    <%for(var i=0; filters.length > i; i++){ %>
+    <input type="checkbox" name="Filter_Id" value="<%=
+        filters[i].Filter_Id %>"> <%=filters[i].Filter_Manufacturer + ', '
+    + filters[i].Filter_Size + ', ' + filters[i].Filter_Type%>
+    <br/>
+    <%}%>
+    <br />
     <input type="submit" />
 </form>
 </body>

@@ -6,8 +6,8 @@
 <body>
 <h1>Edit Lens</h1>
 <form action ="/Lens/update" method="get">
-
-    Lens Id: <input type="hidden"
+    <input
+            type="hidden"
             id="Lens_Id"
             name="Lens_Id"
             value="<%= Lens.Lens_Id %>"
@@ -56,7 +56,15 @@
 
 
     <br/>
-
+    Filters
+    <br />
+    <%for(var i=0; filters.length > i; i++){ %>
+    <input type="checkbox" name="Filter_Id" value="<%=
+        filters[i].Filter_Id %>"> <%=filters[i].Filter_Manufacturer + ', '
+    + filters[i].Filter_Size + ', ' + filters[i].Filter_Type%>
+    <br/>
+    <%}%>
+    <br />
     <input type="submit" />
 </form>
 </body>

@@ -45,6 +45,19 @@ exports.getinfo = function(Camera_Body_Id, callback){
     });
 };
 
+exports.delete = function(params, callback){
+    var query1 = 'call Camera_Body_Delete(?)';
+    var query2 = 'call Camera_Body_Lens_Delete(?)';
+    var query3 = 'call Camera_Body_Photog_Delete(?)';
+    var querydata = [params.Camera_Body_Id];
+    connection.query(query1, querydata, function(err, result){
+        connection.query(query2, querydata, function(err, result){
+            connection.query(query3, querydata, function(err, result){
+                callback(err,result);
+            })
+        })
+    })
+};
 exports.update = function(params, callback){
     var query = 'UPDATE Camera_Body SET Camera_Manufacturer=?, Name=?, Still_Image_Resolution=?, ' +
         'Sensor_Type=?, Lens_Mount=?, Auto_Focus_Points=? where Camera_Body_Id=?';
@@ -55,6 +68,8 @@ exports.update = function(params, callback){
         callback(err, result);
     });
 };
+
+
 
 var CameraBodyLensInsert = function(Camera_Body_Id, Lens_IdArray, callback){
     var query = 'Insert into Camera_Body_Lens (Camera_Body_Id, Lens_id) values (?, ?)';

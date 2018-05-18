@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>A query utilizing a JOIN, GROUP BY, HAVING and an derived function (avg, min, max, etc.)</title>
+</head>
+<body>
+<h1>SELECT c.Camera_Manufacturer, c.Name FROM Camera_Body c
+    LEFT JOIN Camera_Body_Lens cbl ON c.Camera_Body_Id = cbl.Camera_Body_Id
+    GROUP BY c.Camera_Manufacturer, c.Name
+    HAVING COUNT(cbl.Lens_Id) > 1;</h1>
+
+<table border="1">
+    <tr>
+        <th>Camera Manufacturer</th>
+        <th>Name</th>
+    </tr>
+    <%for(var i=0; i< stuff.length; i++ ) { %>
+    <tr>
+        <td><%= stuff[i].Camera_Manufacturer%></td>
+        <td><%= stuff[i].Name%></td>
+    </tr>
+    <%}%>
+</table>
+</body>
+</html>

@@ -11,6 +11,7 @@ var Camera_Body = require('./routes/Camera_Body');
 var Lens = require('./routes/Lens');
 var Filters = require('./routes/Filter');
 var Photographer = require('./routes/Photographer');
+var SubQueries = require('./routes/SubQueries');
 
 var app = express();
 
@@ -32,6 +33,7 @@ app.use('/Camera_Body', Camera_Body);
 app.use('/Lens', Lens);
 app.use('/Filters', Filters);
 app.use('/Photographer', Photographer);
+app.use('/SubQueries', SubQueries);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
